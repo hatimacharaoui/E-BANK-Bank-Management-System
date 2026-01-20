@@ -1,6 +1,7 @@
 import java.util.AbstractCollection;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.function.BinaryOperator;
 
 public class Bank {
     private ArrayList<Account> accounts;
@@ -48,20 +49,24 @@ public class Bank {
     public void supprimerClient() {
         Scanner scanner = new Scanner(System.in);
         try {
-
-
         int numClient = 0;
         int num;
+        boolean trouve = false;
         do{
         System.out.println("Entrer le numéro de client: ");
         num = scanner.nextInt();
         for(Client c : clients){
-            if (c.getNumeroClient() == num){
+            if (c.getNumeroClient() == num) {
                 numClient = c.getNumeroClient();
                 clients.remove(c);
-                System.out.println("Le client a été supprimé avec succès");
-            }else { System.out.println("Aucun client ne correspond à ce numéro.");}
+                trouve = true;
+                break;
+            }
         }
+        if (trouve){
+            System.out.println("Le client a été supprimé avec succès");
+        }else { System.out.println("Aucun client ne correspond à ce numéro.");}
+
         }while (num != numClient);
 
         } catch (Exception e) {
@@ -115,7 +120,6 @@ public class Bank {
     public void supprimerCompte() {
         Scanner scanner = new Scanner(System.in);
         try{
-
         System.out.println("Choisir le type de compte à supprimer: ");
         System.out.println("1. Compte bancaire générique ");
         System.out.println("2. Compte bancaire d'épargne ");
@@ -123,20 +127,29 @@ public class Bank {
         System.out.println("Entrer le numéro de compte: ");
         int numCompte = scanner.nextInt();
 
+        boolean trouve = false;
         if (choix == 1){
             for (Account a : accounts){
                 if(a.getNumeroCompte() == numCompte){
                     accounts.remove(a);
+                    trouve = true;
+                    break;
                 }
             }
         } else if (choix == 2) {
             for (SavingsAccount a : savingsAccounts){
                     if(a.getNumeroCompte() == numCompte){
                         savingsAccounts.remove(a);
+                        trouve = true;
+                        break;
                     }
                 }
         }
-        System.out.println("Le compte a été supprimé avec succès");
+        if(trouve){
+            System.out.println("Le compte a été supprimé avec succès");
+        } else { System.out.println("Ce numéro de compte n'existe pas."); }
+
+
         } catch (Exception e) {
             System.out.println("\nVeuillez entrer un nombre valide."); }
     }
@@ -174,19 +187,24 @@ public class Bank {
         int choix = sc.nextInt();
         System.out.println("Entrer le numéro de compte: ");
         int numCompte = sc.nextInt();
-
+        boolean trouve = false;
         if (choix == 1){
             for (Account a : accounts){
                 if(a.getNumeroCompte() == numCompte){
                     System.out.println("Solde actuel du compte bancaire: "+ a.getSolde()+" DH");
+                    trouve = true;
                 }
             }
         } else if (choix == 2) {
             for (SavingsAccount a : savingsAccounts){
                 if(a.getNumeroCompte() == numCompte){
                     System.out.println("Solde actuel du compte bancaire: "+ a.getSolde()+" DH");
+                    trouve = true;
                 }
             }
+        }
+        if (!trouve){
+            System.out.println("Ce numéro de compte n'existe pas.");
         }
         } catch (Exception e) {
             System.out.println("\nVeuillez entrer un nombre valide."); }
@@ -210,20 +228,26 @@ public class Bank {
             }
         }while (montant < 100);
 
+        boolean trouve = false;
         if (choix == 1){
             for (Account a : accounts) {
                 if (a.getNumeroCompte() == num) {
                     a.setSolde(montant);
+                    trouve = true;
                 }
             }
         } else if (choix == 2) {
             for (SavingsAccount a : savingsAccounts) {
                 if (a.getNumeroCompte() == num) {
                     a.calculerInterets(montant);
+                    trouve = true;
                 }
             }
         }
-        System.out.println("Votre montant a été déposé avec succès.");
+            if (trouve){
+                System.out.println("Votre montant a été déposé avec succès.");
+            }else { System.out.println("Ce numéro de compte n'existe pas."); }
+
         } catch (Exception e) {
             System.out.println("\nVeuillez entrer un nombre valide."); }
     }
@@ -247,20 +271,26 @@ public class Bank {
             }
         }while (montant < 100);
 
+        boolean trouve = false;
         if (choix == 1){
             for (Account a : accounts) {
                 if (a.getNumeroCompte() == num) {
                     a.retirerSolde(montant);
+                    trouve = true;
                 }
             }
         } else if (choix == 2) {
             for (SavingsAccount a : savingsAccounts) {
                 if (a.getNumeroCompte() == num) {
                     a.retirerSolde(montant);
+                    trouve = true;
                 }
             }
         }
-        System.out.println("Le retrait a été effectué avec succès.");
+            if (trouve){
+                System.out.println("Le retrait a été effectué avec succès.");
+            }else { System.out.println("Ce numéro de compte n'existe pas."); }
+
         } catch (Exception e) {
             System.out.println("\nVeuillez entrer un nombre valide."); }
     }

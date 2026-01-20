@@ -21,7 +21,6 @@ public class SavingsAccount extends Account{
 
     @Override
     public void afficherInfo(){
-        System.out.println("   Numéro de Compte : "+ getNumeroCompte());
         System.out.println("      Type de Compte : " + getTypeCompte());
         System.out.println("      Solde : "+ getSolde() +" DH");
     }
