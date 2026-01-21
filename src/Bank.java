@@ -117,6 +117,40 @@ public class Bank {
             System.out.println("\nVeuillez entrer un nombre valide."); }
     }
 
+    public void creerCompteEpargne() {
+        try {
+            Scanner scanner = new Scanner(System.in);
+            int numClient = 0;
+            int num;
+            do{
+                System.out.println("Entrer le numéro de Client: ");
+                num = scanner.nextInt();
+                for(Client c : clients){
+                    if (c.getNumeroClient() == num){
+                        numClient = c.getNumeroClient();
+                    }else { System.out.println("Aucun Client ne correspond à ce numéro.");}
+                }
+            }while (num != numClient);
+
+            double solde = 0;
+            SavingsAccount sa = new SavingsAccount(num, solde,"Compte bancaire d'épargne");
+
+            do {
+                System.out.println("Entrer un solde initial: ");
+                solde = scanner.nextDouble();
+                if (solde < 100) {
+                    System.out.println("Le montant à déposer doit être supérieur à 100 DH\n");
+                }
+            }while (solde < 100);
+
+        sa.calculerInterets(solde);
+        savingsAccounts.add(sa);
+        System.out.println("\nLe compte d'épargne a été créé avec succès");
+
+    } catch (Exception e) {
+        System.out.println("\nVeuillez entrer un nombre valide."); }
+    }
+
     public void supprimerCompte() {
         Scanner scanner = new Scanner(System.in);
         try{

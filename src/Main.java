@@ -10,17 +10,18 @@ public class Main {
         do {
             try {
 
-        System.out.println("========  CIH-BANK  ========");
+        System.out.println("=========  CIH-BANK  =========");
         System.out.println("1. Ajouter un client");
         System.out.println("2. Créer un compte bancaire");
-        System.out.println("3. Consulter le solde");
-        System.out.println("4. Déposer de l’argent");
-        System.out.println("5. Retirer de l’argent");
-        System.out.println("6. Supprimer un compte");
-        System.out.println("7. supprimer un Client");
-        System.out.println("8. Afficher les comptes");
+        System.out.println("3. Créer un compte bancaire d'épargne");
+        System.out.println("4. Consulter le solde");
+        System.out.println("5. Déposer de l’argent");
+        System.out.println("6. Retirer de l’argent");
+        System.out.println("7. Supprimer un compte");
+        System.out.println("8. supprimer un Client");
+        System.out.println("9. Afficher les comptes");
         System.out.println("0. Quitter");
-        System.out.println("============================");
+        System.out.println("==============================");
         System.out.println("Entrer votre choix :");
 
             Scanner sc = new Scanner(System.in);
@@ -28,43 +29,39 @@ public class Main {
             switch (choix) {
                 case 1:
                         CIH.ajouterClient();
-                        System.out.println("\n -------------------------- \n");
+                        System.out.println("----------------------------");
                     break;
                 case 2:
                         CIH.creerCompte();
-                        System.out.println("\n -------------------------- \n");
-
+                        System.out.println("----------------------------");
                     break;
                 case 3:
-                        CIH.consulterSolde();
-                        System.out.println("\n -------------------------- \n");
-
+                        CIH.creerCompteEpargne();
+                    System.out.println("----------------------------");
                     break;
                 case 4:
-                        CIH.deposerArgent();
-                        System.out.println("\n -------------------------- \n");
-
+                    CIH.consulterSolde();
+                    System.out.println("----------------------------");
                     break;
                 case 5:
-                        CIH.retirerArgent();
-                        System.out.println("\n -------------------------- \n");
-
+                    CIH.deposerArgent();
+                    System.out.println("----------------------------");
                     break;
                 case 6:
-                        CIH.supprimerCompte();
-                        System.out.println("\n -------------------------- \n");
-
-
+                    CIH.retirerArgent();
+                    System.out.println("----------------------------");
                     break;
                 case 7:
-                        CIH.supprimerClient();
-                        System.out.println("\n -------------------------- \n");
-
+                    CIH.supprimerCompte();
+                    System.out.println("----------------------------");
                     break;
                 case 8:
-                        CIH.afficherListAccount();
-                        System.out.println("\n -------------------------- \n");
-
+                    CIH.supprimerClient();
+                    System.out.println("----------------------------");
+                    break;
+                case 9:
+                    CIH.afficherListAccount();
+                    System.out.println("----------------------------");
                     break;
             }
             } catch (Exception e) {

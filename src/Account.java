@@ -16,18 +16,22 @@ public class Account {
     }
 
     public String getTypeCompte(){
+
         return TypeCompte;
     }
     public void setTypeCompte(String Tc){
+
         TypeCompte = Tc;
     }
     public double getSolde(){
+
         return Solde;
     }
     public void setSolde(double s){
         Solde += s;
     }
     public void retirerSolde(double s){
+
         Solde -= s;
     }
     public void afficherInfo(){
