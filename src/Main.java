@@ -20,6 +20,7 @@ public class Main {
         System.out.println("7. Supprimer un compte");
         System.out.println("8. supprimer un Client");
         System.out.println("9. Afficher les comptes");
+        System.out.println("10. Transfert d’argent entre comptes");
         System.out.println("0. Quitter");
         System.out.println("==============================");
         System.out.println("Entrer votre choix :");
@@ -61,6 +62,10 @@ public class Main {
                     break;
                 case 9:
                     CIH.afficherListAccount();
+                    System.out.println("----------------------------");
+                    break;
+                case 10:
+                    CIH.transfertArgent();
                     System.out.println("----------------------------");
                     break;
             }

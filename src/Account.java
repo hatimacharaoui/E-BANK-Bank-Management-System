@@ -35,6 +35,7 @@ public class Account {
         Solde -= s;
     }
     public void afficherInfo(){
+        System.out.println("      Numéro de Compte : " + NumeroCompte);
         System.out.println("      Type de Compte : " + TypeCompte);
         System.out.println("      Solde : "+ Solde +" DH");
     }
